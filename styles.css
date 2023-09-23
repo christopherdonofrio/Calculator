@@ -1,0 +1,15 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 500px;
+    
+}
+
+.numbers {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
