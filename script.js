@@ -25,3 +25,21 @@ function operate(x, y, operator) {
         return divide(x, y)
     }
 }
+
+const numbers = document.querySelectorAll(".numbers")
+let displayNum = "";
+let currentDisplay = ""
+
+
+numbers.forEach((num) => {
+    num.addEventListener('click', function() {
+        currentDisplay += num.textContent;
+        console.log(currentDisplay)
+    });
+});
+
+
+function updateDisplay(currentDisplay) {
+    const display = document.querySelector(".display")
+    display.textContent = currentDisplay
+}

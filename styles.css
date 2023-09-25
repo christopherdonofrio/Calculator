@@ -1,15 +1,54 @@
 body {
     display: flex;
     justify-content: center;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .container {
-    width: 500px;
+    width: 450px;
+    height: 600px;    
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 20px;
+    gap: 10px;
     
 }
 
-.numbers {
+.display {
+    width: 375px;
+    height: 100px;   
+    background-color: lightgray; 
+    border: 1px solid black;
+    border-radius: 20px;
+
+}
+
+.buttons {
+    width: 375px;
+    height: 450px;
     display: flex;
-    justify-content: center;
-    flex: 1;
+    border: 1px solid black;
+    border-radius: 10px;
+    gap: 10px;
+
+}
+
+.numbers {
+    
+    width: 93.75px;
+
+    display: flex;
+    flex-grow: 1; /* Allow numbers to fill available space */
+    flex-wrap: wrap-reverse;
+    border-radius: 10px;
+    padding: 5px;
+
+
+
+    
 }
