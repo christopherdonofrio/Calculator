@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', function() {
+
 function add(x, y) {
     return x+y;
 }
@@ -26,20 +28,44 @@ function operate(x, y, operator) {
     }
 }
 
-const numbers = document.querySelectorAll(".numbers")
-let displayNum = "";
-let currentDisplay = ""
+
+const displayText = document.querySelector('.displayText');
+function updateDisplay(str) {
+    if (str === "Clear") {
+        displayText.textContent = "";
+    }
+    else {
+        displayText.textContent = str;
+
+    }
+}
 
 
-numbers.forEach((num) => {
-    num.addEventListener('click', function() {
-        currentDisplay += num.textContent;
-        console.log(currentDisplay)
+const numberButtons = document.querySelectorAll(".number");
+numberButtons.forEach((button) => {
+    button.addEventListener('click', function() {
+
+        if (parseInt(button.textContent) === NaN) {
+            updateDisplay(button.textContent);
+        }
+        else {
+            let fullNumber = "";
+            while (parseInt(button.textContent) !== NaN) {
+            fullNumber += button.textContent
+            }
+            updateDisplay(fullNumber);
+        }   
+        
     });
 });
 
 
-function updateDisplay(currentDisplay) {
-    const display = document.querySelector(".display")
-    display.textContent = currentDisplay
-}
+
+
+
+
+
+
+
+
+});
