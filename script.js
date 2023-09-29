@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-
+/*
 function add(x, y) {
     return x+y;
 }
@@ -12,22 +12,27 @@ function multiply(x, y) {
 function divide(x, y) {
     return x/y;
 }
+*/
+function operate(a, b, operator) {
 
-function operate(x, y, operator) {
+    let x = parseInt(a);
+    let y = parseInt(b);
     if (operator === "+"){
-        return add(x, y)
+        return x + y;
     }
     else if (operator === "-") {
-        return subtract(x, y)
+        return x - y;
     }
     else if (operator === "*") {
-        return multiply(x, y)
+        return x*y;
     }
     else if (operator === "/") {
-        return divide(x, y)
+        return x/y;
     }
 }
 
+
+var number = "";
 
 const displayText = document.querySelector('.displayText');
 function updateDisplay(str) {
@@ -36,25 +41,48 @@ function updateDisplay(str) {
     }
     else {
         displayText.textContent = str;
-
     }
 }
 
+var numCurrent = "";
+var numLast = "";
+var operator = "";
 
 const numberButtons = document.querySelectorAll(".number");
 numberButtons.forEach((button) => {
     button.addEventListener('click', function() {
 
-        if (parseInt(button.textContent) === NaN) {
-            updateDisplay(button.textContent);
-        }
-        else {
-            let fullNumber = "";
-            while (parseInt(button.textContent) !== NaN) {
-            fullNumber += button.textContent
+
+            if (!isNaN(parseFloat(button.textContent))) {
+                numCurrent += button.textContent;
+                updateDisplay(numCurrent)
+                return
+
             }
-            updateDisplay(fullNumber);
-        }   
+            else if (button.textContent === "Clear") {
+                updateDisplay('Clear')
+                numCurrent = "";
+                numLast = ""
+                operator = "";
+                return
+
+            }
+            else if (isNaN(button.textContent) && button.textContent !== "=") {
+                numLast = numCurrent;
+                numCurrent = "";
+                operator = button.textContent
+                updateDisplay(operator)
+
+                return
+
+            }
+            else if (button.textContent === "=") {
+                numCurrent = operate(numLast, numCurrent, operator)
+                updateDisplay(numCurrent)
+                return
+
+            }
+        });
         
     });
 });
@@ -68,4 +96,3 @@ numberButtons.forEach((button) => {
 
 
 
-});
